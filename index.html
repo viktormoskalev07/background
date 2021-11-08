@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+    
+        .bgc1, .bgc2{
+            transition: all 1s;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0; 
+            background-color: red;
+        }
+       
+   
+    </style>
+   
+    <div class="bgc2"><a href='step.html'>   2</a></div>
+    <button>STOP</button>
+
+ 
+    <script>
+ 
+const baseSettings= 'background:'
+            const bgc1 =document.querySelector('.bgc1');
+            const bgc2 =document.querySelector('.bgc2');
+            const c = (r=255,g=0,b=0)=>{
+                const back = [
+            `linear-gradient(217deg, rgba(${r},${g},${b},.8), rgba(${r},${g},${g},0) 70.71%)`,
+            `linear-gradient(127deg, rgba(${b},${r}${g},.8), rgba(${b},${r},${g},0) 70.71%)`,
+            `linear-gradient(336deg, rgba(${b},${g},${r},.8), rgba(${b},${g},${r},0) 70.71%)`
+            ]
+                    return baseSettings+back.join()
+
+            }
+
+            const rd = ()=>Math.round(  Math.random()*4+1);
+                let r=255;
+                let g=0;
+                let b=0; 
+                let step =1
+                let rx=step,bx=step,gx=step;
+                let counter = 0; 
+                bgc2.style=  c(r,g,b)
+        const inter =   setInterval(() => {
+             bgc2.style=  c(r,g,b) 
+       
+            
+            
+                counter++
+                if(counter%(3-gx)<1){
+                  r=r-rx
+                }
+                if(counter%2<1){
+                    g=g+gx
+                } 
+                  b=b+bx;
+                  if(r<12){ rx=      - rd() *step }
+                  if(g<12){ gx=       + rd()*step }
+                  if(b<12){ bx=       + rd()*step }
+                  if(r>233){ rx=     + rd() *step }
+                  if(g>233){ gx=    - rd()  *step }
+                  if(b>233){ bx=    - rd()  *step }
+ 
+                  
+           }, 50);
+ 
+ 
+    </script>
+</body>
+</html>
